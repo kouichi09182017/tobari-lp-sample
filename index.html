@@ -264,6 +264,21 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
 /* ---------- 提案用サンプル表示 ---------- */
 .sample-bar{background:var(--gold);color:var(--ink);font-size:.74rem;font-weight:700;letter-spacing:.04em;text-align:center;padding:.5em var(--gutter);line-height:1.6}
 
+/* ---------- research fixes ---------- */
+.img-note{position:absolute;top:.6rem;right:.6rem;z-index:2;font-size:.64rem;letter-spacing:.12em;padding:.2em .7em;border-radius:999px;background:rgba(16,21,31,.72);color:var(--pearl-dim);border:1px solid rgba(236,229,214,.25)}
+.card .ph .img-note{top:.45rem;right:.45rem;font-size:.6rem}
+.care-note{margin-top:1.4rem;font-size:.8rem;color:var(--pearl-dim);letter-spacing:.04em}
+footer .legal{flex-basis:100%;font-size:.72rem;color:var(--pearl-dim)}
+.route{display:grid;grid-template-columns:1fr;gap:0;padding:1.8rem 1.6rem;background:var(--ink-3)}
+.route .stop{display:grid;grid-template-columns:1.2rem 1fr;column-gap:.8rem;align-items:baseline}
+.route .stop b{font-family:var(--display);font-weight:500;font-size:1.15rem;letter-spacing:.06em}
+.route .stop small{grid-column:2;font-size:.74rem;color:var(--pearl-dim);letter-spacing:.06em}
+.route .dot{width:.8rem;height:.8rem;border-radius:50%;border:2px solid var(--pearl-dim);align-self:center}
+.route .goal .dot{background:var(--gold);border-color:var(--gold)}
+.route .leg{margin-left:.38rem;border-left:2px dashed var(--line);padding:1.1rem 0 1.1rem 1.4rem;display:flex;flex-direction:column;gap:.15rem}
+.route .leg .num{font-family:var(--display);font-size:1.6rem;color:var(--gold);letter-spacing:.06em}
+.route .leg small{font-size:.74rem;color:var(--pearl-dim)}
+
 /* ---------- mobile bottom bar ---------- */
 .mobile-bar{display:none}
 @media (max-width:760px){
@@ -303,7 +318,7 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
         <span class="nw">帳 <span class="roman-h1">-ToBaRi-</span></span>
       </h1>
       <p class="tagline">帳を<wbr>くぐれば、<wbr>牡蠣の<wbr>香り。</p>
-      <p class="lead"><span class="pc-only">岩手産と<wbr>北海道サロマ湖産の<wbr>生牡蠣を<wbr>はじめ、<wbr>焼き牡蠣、<wbr>天ぷら、<wbr>牡蠣飯まで。<wbr>マスターが<wbr>こだわった<wbr>料理と<wbr>酒を、<wbr>カウンターでも<wbr>座敷でも。<wbr>白山市辰巳町、<wbr>松任駅から<span class="nw">徒歩7分</span>の<wbr>町なかの<wbr>一軒です。</span><span class="sp-only">岩手・<wbr>サロマ湖の<wbr>生牡蠣から、<wbr>焼き牡蠣、<wbr>天ぷら、<wbr>牡蠣飯まで。<wbr>松任駅から<span class="nw">徒歩7分</span>、<wbr>町なかの<wbr>一軒です。</span></p>
+      <p class="lead"><span class="pc-only">岩手産と<wbr>北海道サロマ湖産の<wbr>生牡蠣を<wbr>はじめ、<wbr>焼き牡蠣、<wbr>天ぷら、<wbr>牡蠣飯まで。<wbr>マスターが<wbr>こだわった<wbr>料理と<wbr>酒を、<wbr>カウンターでも<wbr>座敷でも。<wbr>白山市辰巳町、<wbr>松任駅から<span class="nw">徒歩7分</span>の<wbr>町なかの<wbr>一軒です。</span><span class="sp-only">岩手・<wbr>サロマ湖の<wbr>生牡蠣から、<wbr>焼き牡蠣、<wbr>天ぷら、<wbr>牡蠣飯まで。<wbr>松任駅から<span class="nw">徒歩7分、</span>町なかの<wbr>一軒です。</span></p>
       <div class="hero-cta">
         <a class="btn solid" href="tel:076-205-2210">電話で<wbr>予約する<span class="tel-no">　076-205-2210</span></a>
         <a class="btn" href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram</a>
@@ -311,12 +326,12 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
       <div class="rating" aria-label="Googleクチコミ評価 4.5 41件">
         <div class="score num">4.5</div>
         <div>
-          <div class="meta"><span class="meta-head">Googleでの<wbr>評価</span><br>クチコミ41件<wbr>（2026年10月時点）<br>1人あたりの<wbr>目安 ￥4,000〜5,000</div>
+          <div class="meta"><span class="meta-head">Googleでの<wbr>評価</span><br>クチコミ41件<wbr>（2026年10月時点）<br>1人あたり ￥4,000〜5,000<wbr>（利用者の<wbr>報告）</div>
         </div>
       </div>
     </div>
     <figure class="hero-visual" aria-label="生牡蠣の盛り合わせ">
-      <img src="img/hero.jpg" alt="氷の上に盛られた生牡蠣とレモン、奥に生ビールと行灯">
+      <span class="img-note">イメージ</span><img src="img/hero.jpg" alt="氷の上に盛られた生牡蠣とレモン、奥に生ビールと行灯">
       <figcaption class="tag">
         <span>生牡蠣<b>Raw Oysters</b></span>
         <span style="text-align:right">岩手・<wbr>サロマ湖<b>Iwate / Saroma</b></span>
@@ -336,23 +351,23 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
 
     <div class="oyster-grid">
       <article class="card">
-        <div class="ph a"><img src="img/raw.jpg" alt="殻付きの生牡蠣3個とポン酢、レモン"></div>
+        <div class="ph a"><span class="img-note">イメージ</span><img src="img/raw.jpg" alt="殻付きの生牡蠣3個とポン酢、レモン"></div>
         <div class="body">
           <span class="origin">IWATE / SAROMA</span>
           <h3>生牡蠣</h3>
-          <p>岩手と<wbr>サロマ湖、<wbr>産地で<wbr>違う<wbr>塩気と<wbr>甘みを<wbr>そのまま。<wbr>季節限定です。</p>
+          <p>岩手と<wbr>サロマ湖、<wbr>産地で<wbr>違う<wbr>塩気と<wbr>甘みを<wbr>そのまま。</p>
         </div>
       </article>
       <article class="card">
-        <div class="ph b"><img src="img/grill.jpg" alt="殻ごと焼いた焼き牡蠣から湯気が立つ"></div>
+        <div class="ph b"><span class="img-note">イメージ</span><img src="img/grill.jpg" alt="殻ごと焼いた焼き牡蠣から湯気が立つ"></div>
         <div class="body">
           <span class="origin">GRILLED</span>
           <h3>焼き牡蠣</h3>
-          <p>殻ごと<wbr>焼いて、<wbr>席まで<wbr>お持ちします。<span class="nw">冬はこちらが主役。</span></p>
+          <p>殻ごと<wbr>焼いて、<wbr>席まで<wbr>お持ちします。<wbr>大きな<wbr>殻に、<wbr>しっかりした身。</p>
         </div>
       </article>
       <article class="card">
-        <div class="ph c"><img src="img/tempura.jpg" alt="牡蠣の天ぷらと塩、レモン"></div>
+        <div class="ph c"><span class="img-note">イメージ</span><img src="img/tempura.jpg" alt="牡蠣の天ぷらと塩、レモン"></div>
         <div class="body">
           <span class="origin">TEMPURA / FRIED</span>
           <h3>牡蠣フライ・天ぷら</h3>
@@ -360,7 +375,7 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
         </div>
       </article>
       <article class="card">
-        <div class="ph d"><img src="img/rice.jpg" alt="土鍋の牡蠣飯としゃもじ"></div>
+        <div class="ph d"><span class="img-note">イメージ</span><img src="img/rice.jpg" alt="土鍋の牡蠣飯としゃもじ"></div>
         <div class="body">
           <span class="origin">RICE</span>
           <h3>牡蠣飯</h3>
@@ -368,6 +383,7 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
         </div>
       </article>
     </div>
+    <p class="care-note">体調に<wbr>不安の<wbr>ある方は、<wbr>焼き牡蠣や<wbr>天ぷらなど、<wbr>加熱した<wbr>牡蠣を<wbr>どうぞ。</p>
   </div>
 </section>
 
@@ -388,7 +404,7 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
     </div>
     <div>
       <ul class="menu-list" aria-label="人気メニュー">
-        <li><span class="name">生牡蠣<wbr>（岩手・<wbr>サロマ湖）<span class="pop">人気</span></span><span class="note">季節限定</span></li>
+        <li><span class="name">生牡蠣<wbr>（岩手・<wbr>サロマ湖）<span class="pop">人気</span></span><span class="note">生</span></li>
         <li><span class="name">焼き牡蠣<span class="pop">人気</span></span><span class="note">殻焼き</span></li>
         <li><span class="name">牡蠣チーズバジル</span><span class="note">牡蠣 × 洋</span></li>
         <li><span class="name">牡蠣チーズトマト</span><span class="note">牡蠣 × 洋</span></li>
@@ -438,13 +454,13 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
       <div class="seat">
         <span class="kana">COUNTER</span>
         <h3>カウンター</h3>
-        <p>仕事帰りに<wbr>ふらっと<wbr>一人で。<wbr>目の前で<wbr>焼かれる<wbr>牡蠣を<wbr>眺めながら、<wbr>一杯。</p>
+        <p>仕事帰りに<wbr>ふらっと<wbr>一人で。<wbr>牡蠣を<wbr>肴に、<wbr>まず<wbr>一杯。</p>
         <span class="for">ひとり飲み・ふたり</span>
       </div>
       <div class="seat">
         <span class="kana">TABLE</span>
         <h3>テーブル</h3>
-        <p>「オシャレで<wbr>デートにも<wbr>ピッタリ」と<wbr>評された<wbr>店内。<span class="nw">装飾を眺めながらゆっくり。</span></p>
+        <p><span class="nw">「店内はオシャレな感じで</span><span class="nw">デートにもピッタリな雰囲気」</span>と<wbr>クチコミに<wbr>ある<wbr>店内。<span class="nw">装飾を眺めながらゆっくり。</span></p>
         <span class="for">デート・記念日</span>
       </div>
       <div class="seat">
@@ -473,28 +489,28 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
 <section class="section" id="access">
   <div class="wrap">
     <p class="eyebrow">Access</p>
-    <h2>松任駅から<span class="nw">徒歩7分</span>、<wbr>町なかの<wbr>一軒。</h2>
+    <h2>松任駅から<span class="nw">徒歩7分、</span>町なかの<wbr>一軒。</h2>
     <div class="access">
       <div>
         <ul class="info">
           <li><span class="k">店名</span><div class="v">帳 -ToBaRi-<small>とばり</small></div></li>
-          <li><span class="k">住所</span><div class="v" id="addr">〒924-0875<br>石川県白山市辰巳町60-2 <button class="copy" type="button" id="copyAddr" aria-label="住所をコピー">コピー</button><small>JR松任駅から<span class="nw">徒歩7分</span>（約500m）</small></div></li>
+          <li><span class="k">住所</span><div class="v" id="addr">〒924-0875<br>石川県白山市辰巳町60-2 <button class="copy" type="button" id="copyAddr" aria-label="住所をコピー">コピー</button><small>IRいしかわ鉄道 松任駅から<span class="nw">徒歩7分（約500m）</span></small></div></li>
           <li><span class="k">電話</span><div class="v"><a href="tel:076-205-2210" class="num">076-205-2210</a><small>ご予約・<wbr>お問い合わせ</small></div></li>
           <li><span class="k">営業時間</span><div class="v"><span class="num">18:00 〜 22:30</span>　月〜日<small>祝日は<wbr>時間が<wbr>変わる<wbr>場合が<wbr>あります。<br>お電話または<wbr>Instagramで<wbr>ご確認ください</small></div></li>
-          <li><span class="k">ご予算</span><div class="v num">￥4,000〜5,000 ／ 1人</div></li>
-          <li><span class="k">駐車場</span><div class="v">専用駐車場なし<small>近くに<wbr>安くて<wbr>広い<wbr>有料駐車場が<wbr>あります<wbr>（クチコミより）</small></div></li>
-          <li><span class="k">SNS</span><div class="v"><a href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram @tobari_matto</a><small>最新情報・季節の<wbr>牡蠣の<wbr>入荷は<wbr>こちらで</small></div></li>
+          <li><span class="k">ご予算</span><div class="v"><span class="num">￥4,000〜5,000 ／ 1人</span><small>Googleマップ利用者13人の<wbr>報告より</small></div></li>
+          <li><span class="k">駐車場</span><div class="v">専用駐車場なし<small>近くに<wbr>安くて<wbr>広い<wbr>有料駐車場が<wbr>あります<wbr>（クチコミより）<br>お車の<wbr>方は、<wbr>運転代行か<wbr>タクシーを<wbr>ご利用ください</small></div></li>
+          <li><span class="k">SNS</span><div class="v"><a href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram @tobari_matto</a><small>最新情報は<wbr>こちらで</small></div></li>
         </ul>
       </div>
       <div class="map-card">
-        <div class="ph" aria-hidden="true">
-          <span class="rail-label">JR 北陸本線 — 松任駅</span>
-          <div class="rail"></div>
-          <div class="pin"></div>
+        <div class="route" aria-label="松任駅からお店まで徒歩7分、約500m">
+          <div class="stop"><span class="dot"></span><b>松任駅</b><small>IRいしかわ鉄道</small></div>
+          <div class="leg"><span class="num"><span class="nw">徒歩7分</span></span><small>約500m・<wbr>ほぼ平坦</small></div>
+          <div class="stop goal"><span class="dot"></span><b>帳 -ToBaRi-</b><small>白山市辰巳町60-2</small></div>
         </div>
         <div class="body">
-          <p>白山市辰巳町 60-2</p>
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">Googleマップで<wbr>開く</a>
+          <p>距離と<wbr>時間は<wbr>Googleマップの<wbr>徒歩ルートより</p>
+          <a class="btn solid" href="https://www.google.com/maps/dir/?api=1&amp;destination=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">ルートを<wbr>調べる</a>
         </div>
       </div>
     </div>
@@ -513,7 +529,7 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
     <div class="hero-cta">
       <a class="btn solid" href="tel:076-205-2210">電話で<wbr>予約する</a>
       <a class="btn" href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram</a>
-      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">地図を<wbr>見る</a>
+      <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">ルートを<wbr>調べる</a>
     </div>
   </div>
 </section>
@@ -525,12 +541,13 @@ p,blockquote,.quote-src,.lead{text-wrap:pretty}
     <a class="brand" href="#top"><span class="kanji">帳</span><span class="roman">ToBaRi</span></a>
     <p>〒924-0875 石川県白山市辰巳町60-2<br class="sp-only">　TEL 076-205-2210<br class="sp-only">　18:00〜22:30</p>
     <p><a href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram</a>　© 帳 -ToBaRi-</p>
+    <p class="legal">飲酒運転は<wbr>法律で<wbr>禁止されています。<wbr>お酒は<wbr>20歳に<wbr>なってから。</p>
   </div>
 </footer>
 
 <div class="mobile-bar" aria-label="予約・地図">
   <a class="btn solid" href="tel:076-205-2210">☎ 電話で<wbr>予約</a>
-  <a class="btn" href="#access">地図・アクセス</a>
+  <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">ルート案内</a>
 </div>
 
 <script>
