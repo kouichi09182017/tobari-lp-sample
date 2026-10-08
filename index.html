@@ -1,0 +1,582 @@
+<title>帳 -ToBaRi-</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: 夜の藍の帳（とばり）を一枚ずつ上げていく縦長LP。帯状セクション＋金の細い罫で区切る。単一テーマ（夜のバー）。 */
+:root{
+  color-scheme: dark;
+  --ink:#10151f;          /* 夜の藍（地） */
+  --ink-2:#161d2b;        /* 一段明るい藍（帯） */
+  --ink-3:#1f2838;        /* カード面 */
+  --line:rgba(217,170,105,.28);
+  --pearl:#ece5d6;        /* 牡蠣殻の内側の白 */
+  --pearl-dim:#b8b0a1;
+  --gold:#d9aa69;         /* 行灯の金 */
+  --gold-deep:#a97a3c;
+  --sea:#3e6b7a;          /* サロマ湖の青緑 */
+  --sea-soft:#6d9aa6;
+  --display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+  --latin:"Cormorant Garamond","Shippori Mincho",serif;
+  --radius:4px;
+  --gutter:clamp(16px,5vw,48px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--pearl);
+  font-family:var(--body);font-size:16px;line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  /* 改行は文節の境目（<wbr>）だけ。単語の途中で折り返さない */
+  word-break:keep-all;overflow-wrap:anywhere;line-break:strict;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:var(--gutter)}
+.eyebrow{
+  font-family:var(--body);font-size:.75rem;letter-spacing:.28em;color:var(--gold);
+  text-transform:uppercase;display:flex;align-items:center;gap:.9em;margin:0 0 .9rem;
+}
+.eyebrow::before{content:"";width:2.2em;height:1px;background:var(--gold);opacity:.8}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance;line-height:1.35}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:.06em}
+h3{font-size:1.15rem;letter-spacing:.04em}
+p{margin:0}
+.lead{color:var(--pearl-dim);max-width:34em;font-size:.98rem}
+.section{padding-block:clamp(72px,10vw,120px)}
+.section.alt{background:var(--ink-2)}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.btn{
+  display:inline-flex;align-items:center;gap:.6em;padding:.95em 1.6em;border-radius:999px;
+  font-family:var(--body);font-weight:700;font-size:.9rem;letter-spacing:.08em;text-decoration:none;
+  border:1px solid var(--gold);color:var(--gold);transition:background .25s,color .25s,transform .2s;
+}
+.btn:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px)}
+.btn.solid{background:var(--gold);color:var(--ink)}
+.btn.solid:hover{background:#e9bd7e}
+.num{font-family:var(--latin);font-variant-numeric:tabular-nums}
+
+/* ---------- header ---------- */
+.site-head{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:rgba(16,21,31,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(217,170,105,.16);
+}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px}
+.brand{display:flex;align-items:baseline;gap:.6em;text-decoration:none}
+.brand .kanji{font-family:var(--display);font-size:1.5rem;font-weight:600;letter-spacing:.1em}
+.brand .roman{font-family:var(--latin);font-size:.95rem;letter-spacing:.3em;color:var(--gold)}
+.nav{display:flex;gap:1.6rem;font-size:.82rem;letter-spacing:.14em}
+.nav a{text-decoration:none;color:var(--pearl-dim)}
+.nav a:hover{color:var(--pearl)}
+.head-tel{font-family:var(--body);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-decoration:none;color:var(--gold);white-space:nowrap;border:1px solid var(--gold);border-radius:999px;padding:.45em 1.1em;transition:background .25s,color .25s}
+.head-tel:hover{background:var(--gold);color:var(--ink)}
+@media (max-width:760px){.nav,.head-tel{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,7vw,96px) clamp(48px,7vw,96px)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
+.hero::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 55% at 72% 38%,rgba(217,170,105,.16),transparent 70%),
+  linear-gradient(180deg,rgba(16,21,31,.1),var(--ink) 95%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center}
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.9rem);font-weight:500;letter-spacing:.08em;line-height:1.3}
+.hero h1 .nw{white-space:nowrap}
+.hero h1 .roman-h1{font-family:var(--latin);font-weight:400;font-size:.62em;letter-spacing:.22em;color:var(--gold);vertical-align:.08em}
+.hero .tagline{font-family:var(--display);font-size:clamp(1.15rem,2.2vw,1.5rem);letter-spacing:.14em;margin-top:1.4rem;color:var(--pearl)}
+.hero h1 .small{display:block;font-size:.36em;letter-spacing:.16em;color:var(--gold);font-weight:400;margin-bottom:.4em}
+.hero .lead{margin-top:1.2rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem 1rem;margin-top:1.8rem;align-items:center}
+.rating{display:flex;align-items:center;gap:.9rem;margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(217,170,105,.22);max-width:30em}
+.rating .score{font-family:var(--latin);font-size:2.6rem;line-height:1;color:var(--gold)}
+.rating .stars{color:var(--gold);letter-spacing:.12em;font-size:.95rem}
+.rating .meta{font-size:.78rem;color:var(--pearl-dim);letter-spacing:.06em;line-height:1.6}
+.hero-visual{position:relative;aspect-ratio:3/4;max-width:100%;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  background:
+   radial-gradient(70% 50% at 50% 80%,rgba(109,154,166,.35),transparent 70%),
+   radial-gradient(40% 30% at 35% 30%,rgba(217,170,105,.22),transparent 70%),
+   linear-gradient(160deg,#1c2535,#0e131c)}
+.hero-visual .mark{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:clamp(7rem,20vw,13rem);color:rgba(236,229,214,.07);font-weight:800;letter-spacing:.1em;user-select:none}
+.hero-visual .tag{position:absolute;left:1rem;bottom:1rem;right:1rem;display:flex;justify-content:space-between;align-items:flex-end;font-size:.72rem;letter-spacing:.14em;color:var(--pearl-dim)}
+.hero-visual .tag b{display:block;font-family:var(--latin);font-weight:400;font-size:.95rem;letter-spacing:.12em;white-space:nowrap;color:var(--pearl)}
+.hero-visual img,.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(16,21,31,.85));pointer-events:none}
+.hero-visual .tag{z-index:1}
+.photo-note{position:absolute;top:.9rem;right:.9rem;font-size:.66rem;letter-spacing:.14em;padding:.35em .8em;border:1px dashed rgba(236,229,214,.35);color:rgba(236,229,214,.6);border-radius:999px}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-visual{aspect-ratio:16/10;order:-1}}
+
+/* ---------- 牡蠣 ---------- */
+.oyster-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem;margin-top:3rem}
+.card{background:var(--ink-3);border:1px solid rgba(217,170,105,.14);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .ph{position:relative;aspect-ratio:4/3;max-width:100%;background:linear-gradient(150deg,#28334a,#141b28)}
+.card .ph.a{background:radial-gradient(60% 60% at 50% 60%,rgba(109,154,166,.45),transparent 70%),linear-gradient(150deg,#243247,#121926)}
+.card .ph.b{background:radial-gradient(60% 60% at 50% 60%,rgba(217,170,105,.35),transparent 70%),linear-gradient(150deg,#2b2a3a,#141826)}
+.card .ph.c{background:radial-gradient(60% 60% at 50% 60%,rgba(236,229,214,.22),transparent 70%),linear-gradient(150deg,#263044,#121a28)}
+.card .ph.d{background:radial-gradient(60% 60% at 50% 60%,rgba(169,122,60,.4),transparent 70%),linear-gradient(150deg,#2d2d3a,#131826)}
+.card .ph .glyph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:3.2rem;color:rgba(236,229,214,.14);font-weight:800}
+.card .body{padding:1.2rem 1.25rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
+.card .body h3{font-size:1.1rem}
+.card .body p{font-size:.85rem;color:var(--pearl-dim);line-height:1.8}
+.card .origin{font-size:.7rem;letter-spacing:.16em;color:var(--sea-soft)}
+@media (max-width:900px){.oyster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.oyster-grid{grid-template-columns:1fr}}
+
+/* ---------- その他メニュー ---------- */
+.menu-split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);align-items:start;margin-top:0}
+.menu-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.menu-list li{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.95rem 0;border-bottom:1px solid rgba(217,170,105,.14)}
+.menu-list .name{font-family:var(--display);font-size:1.05rem;letter-spacing:.04em}
+.menu-list .note{font-size:.78rem;color:var(--pearl-dim);letter-spacing:.06em;text-align:right;white-space:nowrap}
+.menu-list .pop{font-size:.66rem;letter-spacing:.2em;color:var(--gold);border:1px solid var(--line);padding:.1em .6em;border-radius:999px;margin-left:.6em;vertical-align:middle;white-space:nowrap}
+.drink{margin-top:2.2rem;padding:1.4rem 1.5rem;border:1px solid var(--line);border-radius:var(--radius);display:flex;gap:1.2rem;align-items:center}
+.drink .cup{width:44px;height:56px;flex:none;border:1.5px solid var(--gold);border-radius:3px 3px 8px 8px;position:relative;background:linear-gradient(180deg,transparent 22%,rgba(217,170,105,.55) 22%)}
+.drink .cup::before{content:"";position:absolute;left:4px;right:4px;top:6px;height:7px;border-radius:50%;background:rgba(236,229,214,.9)}
+.drink h3{font-size:1rem}
+.drink p{font-size:.85rem;color:var(--pearl-dim);line-height:1.8}
+@media (max-width:860px){.menu-split{grid-template-columns:1fr}}
+
+/* ---------- クチコミ ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem;margin-top:3rem}
+.quote{position:relative;padding:2rem 1.6rem 1.6rem;border:1px solid var(--line);border-radius:var(--radius);background:rgba(31,40,56,.55);display:flex;flex-direction:column;gap:1rem;min-width:0}
+.quote::before{content:"“";position:absolute;top:-.35em;left:1.1rem;font-family:var(--latin);font-size:4rem;line-height:1;color:var(--gold);opacity:.8}
+.quote blockquote{margin:0;font-family:var(--display);font-size:1.08rem;line-height:1.8;letter-spacing:.03em}
+.quote cite{font-style:normal;font-size:.74rem;letter-spacing:.14em;color:var(--pearl-dim)}
+.quote .stars{color:var(--gold);letter-spacing:.12em;font-size:.85rem}
+.quote-src{margin-top:1.6rem;font-size:.76rem;color:var(--pearl-dim);letter-spacing:.06em}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}}
+
+/* ---------- 席 ---------- */
+.seats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:3rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.seat{padding:2rem 1.6rem;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:.8rem;min-width:0;background:var(--ink-3)}
+.seat:last-child{border-right:0}
+.seat .kana{font-family:var(--latin);font-size:.8rem;letter-spacing:.3em;color:var(--gold)}
+.seat h3{font-size:1.3rem}
+.seat p{font-size:.86rem;color:var(--pearl-dim);line-height:1.8}
+.seat .for{font-size:.74rem;letter-spacing:.14em;color:var(--sea-soft);margin-top:auto}
+.budget{display:flex;flex-wrap:wrap;gap:2.5rem 3.5rem;margin-top:2.6rem;align-items:flex-end}
+.budget .big{font-family:var(--latin);font-size:clamp(2rem,4vw,2.8rem);line-height:1;color:var(--pearl)}
+.budget .label{font-size:.72rem;letter-spacing:.22em;color:var(--gold);display:block;margin-bottom:.6rem}
+.budget .sub{font-size:.78rem;color:var(--pearl-dim);letter-spacing:.06em;margin-top:.4rem}
+@media (max-width:860px){.seats{grid-template-columns:1fr}.seat{border-right:0;border-bottom:1px solid var(--line)}.seat:last-child{border-bottom:0}}
+
+/* ---------- アクセス ---------- */
+.access{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);margin-top:3rem;align-items:start}
+.info{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.info li{display:grid;grid-template-columns:7em minmax(0,1fr);gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(217,170,105,.14);font-size:.92rem}
+.info dt,.info .k{font-size:.72rem;letter-spacing:.2em;color:var(--gold);padding-top:.35em}
+.info .v{min-width:0;line-height:1.8}
+.info .v small{display:block;font-size:.76rem;color:var(--pearl-dim);letter-spacing:.04em}
+.info .v a{color:var(--pearl)}
+.map-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--ink-3)}
+.map-card .ph{position:relative;aspect-ratio:4/3;max-width:100%;background:
+  linear-gradient(rgba(217,170,105,.08) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,rgba(217,170,105,.08) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(160deg,#1b2433,#111722)}
+.map-card .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);width:18px;height:18px;border-radius:50% 50% 50% 0;background:var(--gold);rotate:-45deg;box-shadow:0 0 0 8px rgba(217,170,105,.15)}
+.map-card .rail{position:absolute;left:-10%;right:-10%;top:28%;height:3px;background:repeating-linear-gradient(90deg,var(--pearl-dim) 0 14px,transparent 14px 22px);opacity:.35;rotate:-8deg}
+.map-card .rail-label{position:absolute;left:1rem;top:.9rem;font-size:.7rem;letter-spacing:.18em;color:var(--pearl-dim)}
+.map-card .body{padding:1.2rem 1.4rem 1.4rem;display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:center;justify-content:space-between}
+.map-card .body p{font-size:.84rem;color:var(--pearl-dim)}
+.copy{appearance:none;border:1px solid var(--line);background:transparent;color:var(--gold);font-family:var(--body);font-size:.7rem;letter-spacing:.14em;padding:.35em .9em;border-radius:999px;cursor:pointer;margin-left:.6em;vertical-align:middle}
+.copy:hover{background:rgba(217,170,105,.12)}
+@media (max-width:860px){.access{grid-template-columns:1fr}}
+
+/* ---------- CTA band ---------- */
+.cta-band{text-align:center;padding-block:clamp(72px,10vw,120px);position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(217,170,105,.18),transparent 70%)}
+.cta-band .wrap{position:relative}
+.cta-band h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+.cta-band .tel{display:block;font-family:var(--latin);font-size:clamp(2.2rem,6vw,3.6rem);letter-spacing:.08em;margin:1.6rem 0 .4rem;text-decoration:none;color:var(--pearl)}
+.cta-band .hours{font-size:.82rem;letter-spacing:.12em;color:var(--pearl-dim)}
+.cta-band .hero-cta{justify-content:center}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid rgba(217,170,105,.16);padding-block:2.4rem 2.2rem;font-size:.76rem;color:var(--pearl-dim);letter-spacing:.06em}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+footer .brand .kanji{font-size:1.2rem}
+
+/* ---------- review fixes (LP director round 1) ---------- */
+.budget a.tel-big{display:block;color:var(--gold);text-decoration:none}
+.budget a.tel-big:hover{text-decoration:underline;text-underline-offset:.15em}
+@media (max-width:760px){
+  .site-head .wrap{min-height:52px}
+  .hero{padding-block:32px 48px}
+  .hero h1{font-size:2.8rem}
+  .hero .lead{font-size:.92rem}
+  .tel-no{display:none}
+}
+@media (max-width:480px){
+  .oyster-grid{gap:.9rem}
+  .card{flex-direction:row}
+  .card .ph{flex:0 0 40%;aspect-ratio:1/1}
+  .card .body{padding:.9rem 1rem;gap:.35rem}
+  .card .body p{font-size:.8rem;line-height:1.7}
+}
+
+/* ---------- review fixes (LP director round 2) ---------- */
+.hero-visual{margin:0}
+p,blockquote,.quote-src,.lead{text-wrap:pretty}
+.nw{white-space:nowrap}
+.num{font-variant-numeric:lining-nums tabular-nums}
+.info .v a.num{font-size:1.15rem;text-decoration:none}
+.rating .meta-head{color:var(--pearl);font-size:.86rem;letter-spacing:.08em}
+.sp-only,a.more-link.sp-only{display:none}
+.voice-src{margin-top:1rem;font-size:.8rem;color:var(--pearl-dim);letter-spacing:.04em}
+.quotes{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);margin-top:2.2rem}
+.quote.q-long{grid-column:1;grid-row:1/3}
+.quote.q-long blockquote{font-size:1.25rem;line-height:1.9}
+.quote .ellipsis{color:var(--pearl-dim);letter-spacing:0}
+.voice-foot{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between;margin-top:1.6rem}
+.voice-foot .quote-src{margin-top:0}
+.more-link{display:inline-flex;align-items:center;gap:.5em;color:var(--gold);font-size:.85rem;letter-spacing:.08em;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:.2em}
+.more-link::after{content:"→"}
+.more-link:hover{border-color:var(--gold)}
+@media (min-width:861px){.menu-split>div:first-child{position:sticky;top:96px}}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}.quote.q-long{grid-row:auto}}
+@media (max-width:760px){
+  .pc-only{display:none}
+  .sp-only{display:inline}
+  a.more-link.sp-only{display:inline-flex;margin-top:1.2rem}
+  .menu-list li:nth-child(n+7){display:none}
+  .hero-visual .tag{display:none}
+  .mobile-bar{transform:translateY(110%);transition:transform .3s ease}
+  .mobile-bar.show{transform:none}
+}
+@media (max-width:480px){
+  .card{align-items:stretch}
+  .card .ph{flex:0 0 36%;aspect-ratio:auto;min-height:140px}
+  .card .body{flex:1 1 0;min-width:0}
+}
+
+/* ---------- review fixes (LP director round 3) ---------- */
+.nw{display:inline-block}
+@media (max-width:760px){
+  .quote blockquote,.quote.q-long blockquote{font-size:1rem;letter-spacing:.01em}
+  .info li{grid-template-columns:5.2em minmax(0,1fr);gap:.8rem}
+  .seat{padding:1.4rem 1.3rem;gap:.45rem}
+  .seat .for{margin-top:.3rem}
+}
+
+/* ---------- 提案用サンプル表示 ---------- */
+.sample-bar{background:var(--gold);color:var(--ink);font-size:.74rem;font-weight:700;letter-spacing:.04em;text-align:center;padding:.5em var(--gutter);line-height:1.6}
+
+/* ---------- mobile bottom bar ---------- */
+.mobile-bar{display:none}
+@media (max-width:760px){
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  .mobile-bar{display:grid;grid-template-columns:1.4fr 1fr;gap:.6rem;position:fixed;left:0;right:0;bottom:0;z-index:30;
+    padding:.6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom,0px));
+    background:rgba(16,21,31,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(217,170,105,.2)}
+  .mobile-bar .btn{justify-content:center;padding:.85em 1em;font-size:.82rem}
+}
+</style>
+
+<div class="sample-bar" role="note">制作提案用の<wbr>サンプルページです。<wbr>お店の<wbr>公式サイトではありません。<wbr>写真は<wbr>イメージです。</div>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="帳 ToBaRi トップへ"><span class="kanji">帳</span><span class="roman">ToBaRi</span></a>
+    <nav class="nav" aria-label="ページ内リンク">
+      <a href="#oyster">牡蠣</a>
+      <a href="#menu">料理と<wbr>酒</a>
+      <a href="#voice">クチコミ</a>
+      <a href="#seat">席・ご予算</a>
+      <a href="#access">アクセス</a>
+    </nav>
+    <a class="head-tel" href="tel:076-205-2210" aria-label="電話 076-205-2210">☎ 076-205-2210</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="veil" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Hakusan, Ishikawa — 松任駅ちかく</p>
+      <h1>
+        <span class="small">牡蠣と<wbr>酒の<wbr>バー</span>
+        <span class="nw">帳 <span class="roman-h1">-ToBaRi-</span></span>
+      </h1>
+      <p class="tagline">帳を<wbr>くぐれば、<wbr>牡蠣の<wbr>香り。</p>
+      <p class="lead"><span class="pc-only">岩手産と<wbr>北海道サロマ湖産の<wbr>生牡蠣を<wbr>はじめ、<wbr>焼き牡蠣、<wbr>天ぷら、<wbr>牡蠣飯まで。<wbr>マスターが<wbr>こだわった<wbr>料理と<wbr>酒を、<wbr>カウンターでも<wbr>座敷でも。<wbr>白山市辰巳町、<wbr>松任駅から<wbr>歩ける<wbr>町なかの<wbr>一軒です。</span><span class="sp-only">岩手・<wbr>サロマ湖の<wbr>生牡蠣から、<wbr>焼き牡蠣、<wbr>天ぷら、<wbr>牡蠣飯まで。<wbr>松任駅から<wbr>歩ける<wbr>町なかの<wbr>一軒です。</span></p>
+      <div class="hero-cta">
+        <a class="btn solid" href="tel:076-205-2210">電話で<wbr>予約する<span class="tel-no">　076-205-2210</span></a>
+        <a class="btn" href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="rating" aria-label="Googleクチコミ評価 4.5 41件">
+        <div class="score num">4.5</div>
+        <div>
+          <div class="meta"><span class="meta-head">Googleでの<wbr>評価</span><br>クチコミ41件<wbr>（2026年10月時点）<br>1人あたりの<wbr>目安 ￥4,000〜5,000</div>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-visual" aria-label="生牡蠣の盛り合わせ">
+      <img src="img/hero.jpg" alt="氷の上に盛られた生牡蠣とレモン、奥に生ビールと行灯">
+      <figcaption class="tag">
+        <span>生牡蠣<b>Raw Oysters</b></span>
+        <span style="text-align:right">岩手・<wbr>サロマ湖<b>Iwate / Saroma</b></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= 牡蠣 ================= -->
+<section class="section" id="oyster">
+  <div class="wrap">
+    <p class="eyebrow">Oysters</p>
+    <h2>一つの<wbr>牡蠣を、<wbr>四つの<wbr>顔で。</h2>
+    <p class="lead" style="margin-top:1.2rem">生で、<wbr>焼いて、<wbr>揚げて、<wbr>炊いて。<span class="nw">同じ牡蠣でも</span>仕立てが<wbr>変わると、<wbr>香りも<wbr>食感も<wbr>別の<wbr>ものに<wbr>なります。<wbr>まずは<wbr>生と<wbr>焼きを<span class="nw">食べ比べる</span>のが<wbr>おすすめです。</p>
+
+    <div class="oyster-grid">
+      <article class="card">
+        <div class="ph a"><img src="img/raw.jpg" alt="殻付きの生牡蠣3個とポン酢、レモン"></div>
+        <div class="body">
+          <span class="origin">IWATE / SAROMA</span>
+          <h3>生牡蠣</h3>
+          <p>岩手と<wbr>サロマ湖、<wbr>産地で<wbr>違う<wbr>塩気と<wbr>甘みを<wbr>そのまま。<wbr>季節限定です。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph b"><img src="img/grill.jpg" alt="殻ごと焼いた焼き牡蠣から湯気が立つ"></div>
+        <div class="body">
+          <span class="origin">GRILLED</span>
+          <h3>焼き牡蠣</h3>
+          <p>殻ごと<wbr>焼いて、<wbr>席まで<wbr>お持ちします。<span class="nw">冬はこちらが主役。</span></p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph c"><img src="img/tempura.jpg" alt="牡蠣の天ぷらと塩、レモン"></div>
+        <div class="body">
+          <span class="origin">TEMPURA / FRIED</span>
+          <h3>牡蠣フライ・天ぷら</h3>
+          <p>衣の<wbr>中に<wbr>旨みを<wbr>閉じこめて。<wbr>ビールにも<wbr>日本酒にも。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph d"><img src="img/rice.jpg" alt="土鍋の牡蠣飯としゃもじ"></div>
+        <div class="body">
+          <span class="origin">RICE</span>
+          <h3>牡蠣飯</h3>
+          <p>締めは<wbr>これ。<wbr>牡蠣の<wbr>出汁を<wbr>吸った<wbr>米を、<wbr>最後の<wbr>一杯と。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 料理と酒 ================= -->
+<section class="section alt" id="menu">
+  <div class="wrap menu-split">
+    <div>
+      <p class="eyebrow">Food &amp; Drink</p>
+      <h2>牡蠣だけでは、<wbr>終わらせない。</h2>
+      <p class="lead" style="margin-top:1.2rem">牡蠣と<wbr>チーズの<wbr>組み合わせ、<wbr>かに<wbr>みそ、<wbr>スモークタン。<wbr>マスターの<wbr>こだわりは、<wbr>牡蠣以外の<wbr>皿にも<wbr>隅々まで。<span class="nw">「色んなメニューがあって面白い」</span>と、<wbr>クチコミにも<wbr>書かれています。</p>
+      <div class="drink">
+        <div class="cup" aria-hidden="true"></div>
+        <div>
+          <h3>ハートランド生ビール</h3>
+          <p>瓶の<wbr>イメージが<wbr>強い<wbr>ハートランドを、<wbr>ここでは<wbr>生で。<wbr>牡蠣の<wbr>一口目に<wbr>合わせたい<wbr>一杯です。</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="menu-list" aria-label="人気メニュー">
+        <li><span class="name">生牡蠣<wbr>（岩手・<wbr>サロマ湖）<span class="pop">人気</span></span><span class="note">季節限定</span></li>
+        <li><span class="name">焼き牡蠣<span class="pop">人気</span></span><span class="note">殻焼き</span></li>
+        <li><span class="name">牡蠣チーズバジル</span><span class="note">牡蠣 × 洋</span></li>
+        <li><span class="name">牡蠣チーズトマト</span><span class="note">牡蠣 × 洋</span></li>
+        <li><span class="name">牡蠣の<wbr>天ぷら</span><span class="note">揚げ</span></li>
+        <li><span class="name">牡蠣飯</span><span class="note">締め</span></li>
+        <li><span class="name">かに<wbr>みそ甲羅焼き</span><span class="note">酒の<wbr>肴</span></li>
+        <li><span class="name">貝柱春巻き揚げ</span><span class="note">揚げ</span></li>
+        <li><span class="name">スモークタン</span><span class="note">酒の<wbr>肴</span></li>
+        <li><span class="name">エビフライ</span><span class="note">揚げ</span></li>
+      </ul>
+      <a class="more-link sp-only" href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">ほかの<wbr>料理は<wbr>Instagramで</a>
+      <p class="quote-src">Googleマップ掲載の<wbr>人気<wbr>メニューより。<br>仕入れに<wbr>より<wbr>内容・<wbr>価格は<wbr>変わります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= クチコミ ================= -->
+<section class="section" id="voice">
+  <div class="wrap">
+    <p class="eyebrow">Voices</p>
+    <h2>来た<wbr>人が、<wbr>書き残した<wbr>言葉。</h2>
+    <p class="voice-src">Googleマップに<wbr>寄せられた<wbr>クチコミから、<span class="nw">一部を抜粋しています（2026年10月時点）。</span></p>
+    <div class="quotes">
+      <article class="quote q-long">
+        <blockquote>入って<wbr>すぐ<wbr>店内の<wbr>装飾に<span class="nw">目が奪われ</span><span class="nw">可愛いやらカッコいいやらに</span>癒されつつ<span class="nw">席に案内されました。</span><span class="ellipsis">……</span>こんな<wbr>駅近町中で<span class="nw">大好きな牡蠣を</span>食べられるなんて<wbr>感謝。</blockquote>
+      </article>
+      <article class="quote">
+        <blockquote>牡蠣の<wbr>美味しい<wbr>お店<br>マスターの<wbr>こだわりの<wbr>食事と<wbr>酒</blockquote>
+      </article>
+      <article class="quote">
+        <blockquote><span class="nw">カウンターもテーブルも座敷もあるので</span><br>一人で<wbr>でも<wbr>大勢でも<wbr>楽しめる<wbr>お店。</blockquote>
+      </article>
+    </div>
+    <div class="voice-foot">
+      <p class="quote-src">評価4.5、<wbr>クチコミ41件。<br>そのうち23件が<wbr>牡蠣に<wbr>ついて<wbr>書かれています。</p>
+      <a class="more-link" href="https://www.google.com/maps/search/?api=1&query=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">Googleの<wbr>クチコミを<wbr>すべて<wbr>見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 席・予算 ================= -->
+<section class="section alt" id="seat">
+  <div class="wrap">
+    <p class="eyebrow">Seats &amp; Budget</p>
+    <h2>一人でも、<wbr>二人でも、<wbr>大勢でも。</h2>
+    <div class="seats">
+      <div class="seat">
+        <span class="kana">COUNTER</span>
+        <h3>カウンター</h3>
+        <p>仕事帰りに<wbr>ふらっと<wbr>一人で。<wbr>目の前で<wbr>焼かれる<wbr>牡蠣を<wbr>眺めながら、<wbr>一杯。</p>
+        <span class="for">ひとり飲み・ふたり</span>
+      </div>
+      <div class="seat">
+        <span class="kana">TABLE</span>
+        <h3>テーブル</h3>
+        <p>「オシャレで<wbr>デートにも<wbr>ピッタリ」と<wbr>評された<wbr>店内。<span class="nw">装飾を眺めながらゆっくり。</span></p>
+        <span class="for">デート・記念日</span>
+      </div>
+      <div class="seat">
+        <span class="kana">TATAMI</span>
+        <h3>座敷</h3>
+        <p>気の<wbr>置けない<wbr>仲間と、<wbr>靴を<wbr>脱いで。<span class="nw">牡蠣を囲んでにぎやかに。</span></p>
+        <span class="for">グループ・宴会</span>
+      </div>
+    </div>
+    <div class="budget">
+      <div>
+        <span class="label">1人あたりの<wbr>目安</span>
+        <div class="big num">￥4,000〜5,000</div>
+        <p class="sub">Googleマップ利用者 13人の<wbr>報告より</p>
+      </div>
+      <div>
+        <span class="label">ご予約</span>
+        <a class="big num tel-big" href="tel:076-205-2210">076-205-2210</a>
+        <p class="sub">お電話での<wbr>ご予約が<wbr>おすすめです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= アクセス ================= -->
+<section class="section" id="access">
+  <div class="wrap">
+    <p class="eyebrow">Access</p>
+    <h2>松任駅から<wbr>歩ける、<wbr>町なかの<wbr>一軒。</h2>
+    <div class="access">
+      <div>
+        <ul class="info">
+          <li><span class="k">店名</span><div class="v">帳 -ToBaRi-<small>とばり</small></div></li>
+          <li><span class="k">住所</span><div class="v" id="addr">〒924-0875<br>石川県白山市辰巳町60-2 <button class="copy" type="button" id="copyAddr" aria-label="住所をコピー">コピー</button><small>JR 松任駅から<wbr>徒歩圏</small></div></li>
+          <li><span class="k">電話</span><div class="v"><a href="tel:076-205-2210" class="num">076-205-2210</a><small>ご予約・<wbr>お問い合わせ</small></div></li>
+          <li><span class="k">営業時間</span><div class="v"><span class="num">18:00 〜 22:30</span>　月〜日<small>祝日は<wbr>時間が<wbr>変わる<wbr>場合が<wbr>あります。<br>お電話または<wbr>Instagramで<wbr>ご確認ください</small></div></li>
+          <li><span class="k">ご予算</span><div class="v num">￥4,000〜5,000 ／ 1人</div></li>
+          <li><span class="k">駐車場</span><div class="v">専用駐車場なし<small>近くに<wbr>安くて<wbr>広い<wbr>有料駐車場が<wbr>あります<wbr>（クチコミより）</small></div></li>
+          <li><span class="k">SNS</span><div class="v"><a href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram @tobari_matto</a><small>最新情報・季節の<wbr>牡蠣の<wbr>入荷は<wbr>こちらで</small></div></li>
+        </ul>
+      </div>
+      <div class="map-card">
+        <div class="ph" aria-hidden="true">
+          <span class="rail-label">JR 北陸本線 — 松任駅</span>
+          <div class="rail"></div>
+          <div class="pin"></div>
+        </div>
+        <div class="body">
+          <p>白山市辰巳町 60-2</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">Googleマップで<wbr>開く</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= CTA ================= -->
+<section class="cta-band">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center">Reservation</p>
+    <h2>今夜、<wbr>牡蠣を。</h2>
+    <a class="tel num" href="tel:076-205-2210">076-205-2210</a>
+    <p class="hours">18:00 〜 22:30　／　白山市辰巳町 60-2</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="tel:076-205-2210">電話で<wbr>予約する</a>
+      <a class="btn" href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%B8%B3%20ToBaRi%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E7%99%BD%E5%B1%B1%E5%B8%82%E8%BE%B0%E5%B7%B3%E7%94%BA60-2" target="_blank" rel="noopener">地図を<wbr>見る</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="kanji">帳</span><span class="roman">ToBaRi</span></a>
+    <p>〒924-0875 石川県白山市辰巳町60-2<br class="sp-only">　TEL 076-205-2210<br class="sp-only">　18:00〜22:30</p>
+    <p><a href="https://www.instagram.com/tobari_matto/" target="_blank" rel="noopener">Instagram</a>　© 帳 -ToBaRi-</p>
+  </div>
+</footer>
+
+<div class="mobile-bar" aria-label="予約・地図">
+  <a class="btn solid" href="tel:076-205-2210">☎ 電話で<wbr>予約</a>
+  <a class="btn" href="#access">地図・アクセス</a>
+</div>
+
+<script>
+(function(){
+  // スマホ固定バー：ヒーローの予約ボタンが画面外に出たら表示
+  var bar=document.querySelector('.mobile-bar'),heroCta=document.querySelector('.hero .hero-cta');
+  if(bar&&heroCta&&'IntersectionObserver' in window){
+    var pastHero=false,inCta=false,cta=document.querySelector('.cta-band');
+    var sync=function(){bar.classList.toggle('show',pastHero&&!inCta)};
+    new IntersectionObserver(function(es){es.forEach(function(e){pastHero=!e.isIntersecting&&e.boundingClientRect.top<0;sync()})}).observe(heroCta);
+    // 最終CTA帯が見えている間は固定バーを隠し、電話ボタンの重複を防ぐ
+    if(cta)new IntersectionObserver(function(es){es.forEach(function(e){inCta=e.isIntersecting;sync()})}).observe(cta);
+  }else if(bar){bar.classList.add('show')}
+
+  // 住所コピー
+  var b=document.getElementById('copyAddr');
+  if(b){b.addEventListener('click',function(){
+    var t='石川県白山市辰巳町60-2';
+    var done=function(){b.textContent='コピーしました';setTimeout(function(){b.textContent='コピー'},1800)};
+    try{navigator.clipboard.writeText(t).then(done,function(){fallback()})}catch(e){fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('addr'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  });}
+
+  // 帳（ヴェール）: ゆらぐ布のような縦のカーテンを描く
+  var c=document.getElementById('veil');if(!c)return;
+  var ctx=c.getContext('2d'),w,h,t=0,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){var r=c.getBoundingClientRect();w=c.width=Math.floor(r.width*devicePixelRatio);h=c.height=Math.floor(r.height*devicePixelRatio)}
+  size();addEventListener('resize',size);
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    var cols=14,cw=w/cols;
+    for(var i=0;i<cols;i++){
+      var x=i*cw,ph=i*0.7,sw=Math.sin(t*0.4+ph)*0.5+0.5;
+      var g=ctx.createLinearGradient(x,0,x+cw,0);
+      var a=0.05+sw*0.09;
+      g.addColorStop(0,'rgba(217,170,105,0)');
+      g.addColorStop(0.5,'rgba(217,170,105,'+a+')');
+      g.addColorStop(1,'rgba(217,170,105,0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();
+      ctx.moveTo(x,0);
+      for(var y=0;y<=h;y+=h/12){var dx=Math.sin(y/h*3+t*0.6+ph)*cw*0.18;ctx.lineTo(x+dx,y)}
+      ctx.lineTo(x+cw,h);ctx.lineTo(x+cw,0);ctx.closePath();ctx.fill();
+    }
+    if(!reduce){t+=0.016;requestAnimationFrame(draw)}
+  }
+  draw();
+})();
+</script>
